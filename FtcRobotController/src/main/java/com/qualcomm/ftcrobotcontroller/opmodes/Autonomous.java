@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
- * Created by Owner on 12/23/2015.
+ * Created by Divya on 12/23/2015.
  */
 public class Autonomous extends RobotDrive {
     DcMotor RightF;
