@@ -18,8 +18,7 @@ public class RobotDrive extends LinearOpMode
 
     @Override
 
-    public void runOpMode() throws InterruptedException
-    {
+    public void runOpMode() throws InterruptedException {
         RightR = hardwareMap.dcMotor.get("motor_1");
         RightR.setDirection(DcMotor.Direction.REVERSE);
         RightF = hardwareMap.dcMotor.get("motor_2");
@@ -27,8 +26,77 @@ public class RobotDrive extends LinearOpMode
         LeftR = hardwareMap.dcMotor.get("motor_3");
         LeftF = hardwareMap.dcMotor.get("motor_4");
         Sweeper = hardwareMap.dcMotor.get("motor_6");
-//        cSensor = hardwareMap.colorSensor.get("color_sensor");
-//        cSensor.enableLed(false);
+        cDrop = hardwareMap.servo.get("servo_1");
+
+    }
+
+    public void frontDrive(double speed, int distance) {
+        setMotorEncoders();
+        while (LeftF.getCurrentPosition() < distance) {
+            LeftF.setPower(speed);
+            LeftR.setPower(speed);
+            RightF.setPower(speed);
+            RightR.setPower(speed);
+        }
+
+        LeftF.setPower(0);
+        LeftR.setPower(0);
+        RightF.setPower(0);
+        RightR.setPower(0);
+        resetMotors();
+
+    }
+
+    public void leftTurn(double speed, int distance) {
+        setMotorEncoders();
+        while (RightF.getCurrentPosition() < distance) {
+            LeftF.setPower(-speed);
+            LeftR.setPower(-speed);
+            RightF.setPower(speed);
+            RightR.setPower(speed);
+        }
+
+        LeftF.setPower(0);
+        LeftR.setPower(0);
+        RightF.setPower(0);
+        RightR.setPower(0);
+        resetMotors();
+    }
+
+    public void rightTurn(double speed, int distance) {
+        setMotorEncoders();
+
+        while (LeftF.getCurrentPosition() < distance) {
+            LeftF.setPower(speed);
+            LeftR.setPower(speed);
+            RightF.setPower(-speed);
+            RightR.setPower(-speed);
+        }
+
+        LeftF.setPower(0);
+        LeftR.setPower(0);
+        RightF.setPower(0);
+        RightR.setPower(0);
+        resetMotors();
+
+    }
+
+    public void resetMotors()
+    {   while ((LeftF.getCurrentPosition() > 5) || (RightF.getCurrentPosition() > 5)){
+        LeftF.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        LeftR.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        RightF.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+        RightR.setMode(DcMotorController.RunMode.RESET_ENCODERS);
+    }
+    }
+
+    private void setMotorEncoders()
+    {
+        LeftF.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+        LeftR.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+        RightF.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+        RightR.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+
     }
 
 
