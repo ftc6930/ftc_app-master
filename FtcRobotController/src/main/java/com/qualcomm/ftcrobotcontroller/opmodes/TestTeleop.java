@@ -9,12 +9,12 @@ public class TestTeleop extends OpMode
 {
     double cPosition;
     double cDelta = 0.02;
-/*
-    double z1Position;
-    double z2Position;
-    double z1Delta = 0.02;
-    double z2Delta = 0.02;
-*/
+    /*
+        double z1Position;
+        double z2Position;
+        double z1Delta = 0.02;
+        double z2Delta = 0.02;
+    */
     double wPosition;
     double wDelta = 0.01;
     double lPosition;
@@ -78,7 +78,7 @@ public class TestTeleop extends OpMode
         lPosition = 0.0;
         rotBox = hardwareMap.servo.get("servo_5");
         rPosition = 0.0;
-        Flip = hardwareMap.servo.get("servo_6");
+        Flip = hardwareMap.servo.get("servo_6"); //Door
         fPosition = 0.0;
         bPosition = 0.7;
     }

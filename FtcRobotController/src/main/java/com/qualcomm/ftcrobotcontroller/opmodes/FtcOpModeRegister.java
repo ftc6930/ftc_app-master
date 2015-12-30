@@ -55,10 +55,11 @@ public class FtcOpModeRegister implements OpModeRegister {
      * If two or more op modes are registered with the same name, the app will display an error.
      */
 
+    manager.register ("Color", AdafruitRGBExample.class);
     manager.register("NullOp", NullOp.class);
     manager.register ("Auto", Autonomous.class);
     manager.register ("TeleOp 12/18/15", TeleOp.class);
     manager.register ("TeleOp 12/19/15", TestTeleop.class);
-    manager.register ("OldAuto", LatestAutonomous.class);
+    manager.register ("Auto 12/29/15", NewAutonomous.class);
   }
 }
