@@ -30,6 +30,14 @@ public class RobotDrive extends LinearOpMode
 
     }
 
+    public void setSweeperPower( double speed) {
+        Sweeper.setPower(speed);
+    }
+
+    public void setClimberDrop(double position)
+    {        cDrop.setPosition(position);
+    }
+
     public void frontDrive(double speed, int distance) {
         setMotorEncoders();
         while (LeftF.getCurrentPosition() < distance) {
@@ -46,6 +54,8 @@ public class RobotDrive extends LinearOpMode
         resetMotors();
 
     }
+
+
 
     public void leftTurn(double speed, int distance) {
         setMotorEncoders();
@@ -100,36 +110,16 @@ public class RobotDrive extends LinearOpMode
     }
 
 
-
-
-    public void fDrive(double speed, int distance)
+    private void startSweeper()
     {
-        LeftF.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        LeftR.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        RightF.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-        RightR.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
-
-        while (LeftF.getCurrentPosition() < distance)
-        {
-            LeftF.setPower(speed);
-            LeftR.setPower(speed);
-            RightF.setPower(speed);
-            RightR.setPower(speed);
-        }
-
-        LeftF.setPower(0);
-        LeftR.setPower(0);
-        RightF.setPower(0);
-        RightR.setPower(0);
-
-        while (LeftF.getCurrentPosition() > 5)
-        {
-            LeftF.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-            LeftR.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-            RightF.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-            RightR.setMode(DcMotorController.RunMode.RESET_ENCODERS);
-        }
+        Sweeper.setPower(0);
     }
+
+    private void stopSweeper()
+    {
+        Sweeper.setPower(.80);
+    }
+
 
     public void rDrive(double speed, int distance)
     {

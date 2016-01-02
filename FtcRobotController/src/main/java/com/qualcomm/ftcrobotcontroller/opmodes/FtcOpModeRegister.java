@@ -60,6 +60,5 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register ("Auto", Autonomous.class);
     manager.register ("TeleOp 12/18/15", TeleOp.class);
     manager.register ("TeleOp 12/19/15", TestTeleop.class);
-    manager.register ("Auto 12/29/15", NewAutonomous.class);
   }
 }
