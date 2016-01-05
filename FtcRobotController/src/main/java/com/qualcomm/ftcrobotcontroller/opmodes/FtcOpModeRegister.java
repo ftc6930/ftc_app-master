@@ -58,7 +58,7 @@ public class FtcOpModeRegister implements OpModeRegister {
     manager.register ("Color", AdafruitRGBExample.class);
     manager.register("NullOp", NullOp.class);
     manager.register ("Auto", Autonomous.class);
-    manager.register ("TeleOp 12/18/15", TeleOp.class);
+    manager.register ("NewAuto", NewAutonomous.class);
     manager.register ("TeleOp 12/19/15", TestTeleop.class);
   }
 }
